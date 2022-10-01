@@ -7,7 +7,8 @@ int main() {
     std::cout << "Hello, World!" << std::endl;
     BigInt a("2134325434589458358934");
     a.printInt();
-    BigReal b("+2134423412313.21312312421334E1234");
+    BigReal b("12345.6789E100");
     b.printReal();
+    b.normalization();
     return 0;
 }

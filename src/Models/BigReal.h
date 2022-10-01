@@ -14,9 +14,11 @@ namespace KVA {
         BigReal();
         BigReal(string s);
         void printReal();
+        void normalization();
     private:
         vector<int> number;
         bool sign;
+        int newOrder{};
         vector<int> mantiss;
         int point{};
         vector<int> order;
