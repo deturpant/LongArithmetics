@@ -37,7 +37,7 @@ int main() {
     std::cout << "Int: ";
     BigInt a("2134325434589458358934");
     a.printInt();
-    BigReal b("12343782523428445.61243224789E100");
+    BigReal b("12343782523428445.612432247289E100");
     BigReal result = a*b;
     return 0;
 }
