@@ -6,7 +6,6 @@
 
 #include <vector>
 #include <string>
-#include <bits/stdc++.h>
 #include "BigReal.h"
 using namespace std;
 namespace KVA {
@@ -23,7 +22,7 @@ namespace KVA {
     public:
         const vector<int> &getNumber() const;
     };
-
+    BigReal operator*(BigInt &myInt, BigReal &myReal);
 } // KVA
 
 #endif //LONGARITHMETIC_BIGINT_H

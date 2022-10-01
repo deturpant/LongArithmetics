@@ -6,7 +6,6 @@
 #define LONGARITHMETIC_BIGREAL_H
 #include <string>
 #include <vector>
-#include "BigInt.h"
 #include <bits/stdc++.h>
 using namespace std;
 namespace KVA {
@@ -42,6 +41,7 @@ namespace KVA {
         vector<int> order;
 
     };
+
 } // KVA
 
 #endif //LONGARITHMETIC_BIGREAL_H
