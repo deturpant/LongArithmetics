@@ -4,6 +4,7 @@
 //-23422134.2133123E10
 #include "BigReal.h"
 #include <bits/stdc++.h>
+
 namespace KVA {
     BigReal::BigReal() {
         number.resize(1);
@@ -37,10 +38,15 @@ namespace KVA {
         for (int i = 0; i != order.size(); i++, size--) {
             newOrder += order[i] * pow(10, size - 1);
         }
+        cout << "Введенное число: ";
+        printReal();
+        normalization();
+        cout << "Нормализованная форма: ";
+        printReal();
     }
 
     void BigReal::printReal() {
-        if (point==mantiss.size()) cout << "0.";
+        if (point == mantiss.size()) cout << "0.";
         if (sign == 1) cout << "-";
         for (int i = mantiss.size() - 1; i >= 0; i--) {
             cout << mantiss[i];
@@ -54,11 +60,42 @@ namespace KVA {
     }
 
     void BigReal::normalization() {
-        while (point!=mantiss.size()) {
+        while (point != mantiss.size()) {
             newOrder++;
             point++;
         }
-        printReal();
-        cout << endl;
     }
+
+    bool BigReal::isSign() const {
+        return sign;
+    }
+
+    int BigReal::getNewOrder() const {
+        return newOrder;
+    }
+
+    const vector<int> &BigReal::getMantiss() const {
+        return mantiss;
+    }
+
+    int BigReal::getPoint() const {
+        return point;
+    }
+
+    void BigReal::setSign(bool sign) {
+        BigReal::sign = sign;
+    }
+
+    void BigReal::setNewOrder(int newOrder) {
+        BigReal::newOrder = newOrder;
+    }
+
+    void BigReal::setMantiss(const vector<int> &mantiss) {
+        BigReal::mantiss = mantiss;
+    }
+
+    void BigReal::setPoint(int point) {
+        BigReal::point = point;
+    }
+
 } // KVA

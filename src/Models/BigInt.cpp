@@ -25,4 +25,8 @@ namespace KVA {
         }
         cout << "\n";
     }
+
+    const vector<int> &BigInt::getNumber() const {
+        return number;
+    }
 } // KVA

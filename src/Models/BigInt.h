@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 #include <bits/stdc++.h>
-
+#include "BigReal.h"
 using namespace std;
 namespace KVA {
 
@@ -18,9 +18,10 @@ namespace KVA {
         BigInt(string s);
 
         void printInt() const;
-
     private:
         std::vector<int> number;
+    public:
+        const vector<int> &getNumber() const;
     };
 
 } // KVA
