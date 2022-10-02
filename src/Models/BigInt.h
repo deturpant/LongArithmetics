@@ -20,6 +20,7 @@ namespace KVA {
 
         void inputInt(string s);
         void printInt() const;
+        void clear();
     private:
         std::vector<int> number;
         bool sign = 0;

@@ -40,6 +40,11 @@ namespace KVA {
         return sign;
     }
 
+    void BigInt::clear() {
+        number.resize(0);
+        sign = 0;
+    }
+
     BigReal operator*(BigInt &myInt, BigReal &myReal) {
         int sizeInt = myInt.getNumber().size();
         BigReal rezult;

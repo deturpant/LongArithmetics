@@ -32,7 +32,7 @@ namespace KVA {
         const vector<int> &getMantiss() const;
 
         int getPoint() const;
-
+        void clear();
     private:
         bool sign = 0;
         int newOrder{};

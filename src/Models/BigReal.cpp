@@ -88,4 +88,13 @@ namespace KVA {
         }
     }
 
+    void BigReal::clear() {
+        mantiss.resize(0);
+        order.resize(0);
+        newOrder = 0;
+        point = 0;
+        sign = 0;
+
+    }
+
 } // KVA

@@ -14,6 +14,10 @@ int main() {
         std::cout << "1. Ввод целого числа\n2. Ввод действительного числа.\n3. Вычислить результат умножения\n0. Выход\nSelect--> ";
         cin >> index;
         switch(index) {
+            input = "";
+            a.clear();
+            b.clear();
+            result.clear();
             case 1:
                 cout << "Введите целое число до 30 знаков: ";
                 cin >> input;
