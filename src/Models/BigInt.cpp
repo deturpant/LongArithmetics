@@ -6,19 +6,14 @@
 
 using namespace std;
 namespace KVA {
-    BigInt::BigInt() {
-        number.resize(1);
-        number[0] = 0;
-    }
+    BigInt::BigInt() {}
 
     BigInt::BigInt(string s) {
-        for (char digit: s) {
-            number.push_back(digit - '0');
-        }
-        reverse(number.begin(), number.end());
+        inputInt(s);
     }
 
     void BigInt::printInt() const {
+        if (sign == 1) cout << "-";
         for (int i = number.size() - 1; i >= 0; i--) {
             cout << number[i];
         }
@@ -28,6 +23,23 @@ namespace KVA {
     const vector<int> &BigInt::getNumber() const {
         return number;
     }
+
+    void BigInt::inputInt(string s) {
+        for (char digit: s) {
+            if (digit == '-') {
+                sign = 1;
+            } else if (digit == '+') sign = 0;
+            else {
+                number.push_back(digit - '0');
+            }
+        }
+        reverse(number.begin(), number.end());
+    }
+
+    bool BigInt::isSign() const {
+        return sign;
+    }
+
     BigReal operator*(BigInt &myInt, BigReal &myReal) {
         int sizeInt = myInt.getNumber().size();
         BigReal rezult;
@@ -42,20 +54,22 @@ namespace KVA {
                 result[i + j] += myInt.getNumber()[i] * myReal.getMantiss()[j];
             }
         }
-        for (int i = 0; i <result.size()+1; i++) {
-            result[i+1] += result[i]/10;
-            result[i]%=10;
+        for (int i = 0; i < result.size() + 1; i++) {
+            result[i + 1] += result[i] / 10;
+            result[i] %= 10;
         }
-        while(result[result.size()]==0 && result[result.size()-1]==0) {
-            result.resize(result.size()-1);
+        while (result[result.size()] == 0 && result[result.size() - 1] == 0) {
+            result.resize(result.size() - 1);
         }
         rezult.setPoint(sizeReal);
         rezult.setMantiss(result);
-        rezult.setSign(myReal.isSign());
-        cout << "Результат вычислений: ";
+        if ((myInt.isSign()==0 && myReal.isSign()==1) || (myInt.isSign()==1 && myReal.isSign()==0)) {
+            rezult.setSign(1);
+        }
+        else {
+            rezult.setSign(0);
+        }
         rezult.normalization();
-        rezult.printReal();
-        cout << endl;
         return rezult;
     }
 } // KVA

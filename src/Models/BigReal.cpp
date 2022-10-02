@@ -6,48 +6,15 @@
 #include <bits/stdc++.h>
 
 namespace KVA {
-    BigReal::BigReal() {
-        number.resize(1);
-        number[0] = 0;
-        mantiss.resize(1);
-        mantiss[0] = 0;
-        order.resize(1);
-        order[0] = 0;
-    }
+    BigReal::BigReal() {}
 
     BigReal::BigReal(string s) {
-        for (int i = 0; i < s.length(); i++) {
-            if (s[i] == '+' || isdigit(s[0])) {
-                sign = 0;
-            } else if (s[i] == '-') {
-                sign = 1;
-            }
-            if (isdigit(s[i])) {
-                mantiss.push_back(s[i] - '0');
-            } else if (s[i] == '.') {
-                point = mantiss.size() + 1;
-            } else if (s[i] == 'E') {
-                for (int j = i + 1; s[j] != '\0'; j++) {
-                    order.push_back(s[j] - '0');
-                }
-                reverse(mantiss.begin(), mantiss.end());
-                break;
-            }
-        }
-        int size = order.size();
-        for (int i = 0; i != order.size(); i++, size--) {
-            newOrder += order[i] * pow(10, size - 1);
-        }
-        cout << "Введенное число: ";
-        printReal();
-        normalization();
-        cout << "Нормализованная форма: ";
-        printReal();
+        inputReal(s);
     }
 
     void BigReal::printReal() {
-        if (point == mantiss.size()) cout << "0.";
         if (sign == 1) cout << "-";
+        if (point == mantiss.size()) cout << "0.";
         for (int i = mantiss.size() - 1; i >= 0; i--) {
             cout << mantiss[i];
             if (i == point) {
@@ -96,6 +63,29 @@ namespace KVA {
 
     void BigReal::setPoint(int point) {
         BigReal::point = point;
+    }
+
+    void BigReal::inputReal(std::string s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == '-') {
+                sign = 1;
+            } else if (isdigit(s[i])) {
+                mantiss.push_back(s[i] - '0');
+            } else if (s[i] == '.') {
+                point = mantiss.size() + 1;
+            } else if (s[i] == 'E') {
+                for (int j = i + 1; s[j] != '\0'; j++) {
+                    order.push_back(s[j] - '0');
+                }
+                reverse(mantiss.begin(), mantiss.end());
+                point = mantiss.size()+1 - point;
+                break;
+            }
+        }
+        int size = order.size();
+        for (int i = 0; i != order.size(); i++, size--) {
+            newOrder += order[i] * pow(10, size - 1);
+        }
     }
 
 } // KVA

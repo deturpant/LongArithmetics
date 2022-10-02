@@ -16,9 +16,13 @@ namespace KVA {
 
         BigInt(string s);
 
+        bool isSign() const;
+
+        void inputInt(string s);
         void printInt() const;
     private:
         std::vector<int> number;
+        bool sign = 0;
     public:
         const vector<int> &getNumber() const;
     };

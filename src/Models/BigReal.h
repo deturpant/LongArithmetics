@@ -15,6 +15,7 @@ namespace KVA {
         BigReal(string s);
         void printReal();
         void normalization();
+        void inputReal(std::string s);
 
         void setSign(bool sign);
 
@@ -33,8 +34,7 @@ namespace KVA {
         int getPoint() const;
 
     private:
-        vector<int> number;
-        bool sign;
+        bool sign = 0;
         int newOrder{};
         vector<int> mantiss;
         int point{};
