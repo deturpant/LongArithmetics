@@ -3,4 +3,4 @@ project(LongArithmetic)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(LongArithmetic main.cpp Models/BigInt.cpp Models/BigInt.h Models/BigReal.cpp Models/BigReal.h)
+add_executable(LongArithmetic main.cpp Models/BigInt.cpp Models/BigInt.h Models/BigReal.cpp Models/BigReal.h Models/MyException.h Models/MyException.cpp)

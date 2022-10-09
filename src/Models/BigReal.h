@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <bits/stdc++.h>
+#include "MyException.h"
 using namespace std;
 namespace KVA {
     class BigReal {
@@ -33,8 +34,14 @@ namespace KVA {
 
         int getPoint() const;
         void clear();
+
     private:
         bool sign = 0;
+        bool valid = false;
+    public:
+        bool isValid() const;
+
+    private:
         int newOrder{};
         vector<int> mantiss;
         int point{};

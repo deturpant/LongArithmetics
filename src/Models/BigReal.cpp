@@ -66,6 +66,9 @@ namespace KVA {
     }
 
     void BigReal::inputReal(std::string s) {
+        clear();
+        bool flagOrder = false;
+        bool flagPoint = false;
         for (int i = 0; i < s.length(); i++) {
             if (s[i] == '-') {
                 sign = 1;
@@ -73,7 +76,9 @@ namespace KVA {
                 mantiss.push_back(s[i] - '0');
             } else if (s[i] == '.') {
                 point = mantiss.size() + 1;
+                flagPoint = true;
             } else if (s[i] == 'E') {
+                flagOrder = true;
                 for (int j = i + 1; s[j] != '\0'; j++) {
                     order.push_back(s[j] - '0');
                 }
@@ -86,6 +91,11 @@ namespace KVA {
         for (int i = 0; i != order.size(); i++, size--) {
             newOrder += order[i] * pow(10, size - 1);
         }
+        if (!flagOrder || !flagPoint) {
+            clear();
+            throw MyException{"Invalid number."};
+        }
+        valid = true;
     }
 
     void BigReal::clear() {
@@ -94,7 +104,12 @@ namespace KVA {
         newOrder = 0;
         point = 0;
         sign = 0;
+        valid = false;
 
+    }
+
+    bool BigReal::isValid() const {
+        return valid;
     }
 
 } // KVA

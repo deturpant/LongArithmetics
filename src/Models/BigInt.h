@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include "BigReal.h"
+#include "MyException.h"
 using namespace std;
 namespace KVA {
 
@@ -21,9 +22,14 @@ namespace KVA {
         void inputInt(string s);
         void printInt() const;
         void clear();
+
     private:
         std::vector<int> number;
         bool sign = 0;
+        bool valid = false;
+    public:
+        bool isValid() const;
+
     public:
         const vector<int> &getNumber() const;
     };
